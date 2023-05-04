@@ -1,6 +1,7 @@
 const express = require("express");
 const morgan = require("morgan");
 const postBank = require("./postBank");
+const { default: htmlTemplateTag } = require("html-template-tag");
 
 const app = express();
 
@@ -49,7 +50,6 @@ app.get("/", (req, res) => {
 app.get("/posts/:id", (req, res) => {
   const id = req.params.id;
   const post = postBank.find(id);
-
   const html = `
   <!DOCTYPE html>
   <html>
@@ -80,7 +80,7 @@ app.get("/posts/:id", (req, res) => {
   }
 });
 
-const PORT = 1337;
+const { PORT = 1337 } = process.env;
 
 app.use((err, req, res, next) => {
   console.error(err);
