@@ -80,7 +80,7 @@ app.get("/posts/:id", (req, res) => {
   }
 });
 
-const { PORT = 1337 } = process.env;
+const { PORT = 8080 } = process.env;
 
 app.use((err, req, res, next) => {
   console.error(err);
